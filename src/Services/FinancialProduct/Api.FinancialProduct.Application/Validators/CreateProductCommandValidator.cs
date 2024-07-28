@@ -1,6 +1,7 @@
 namespace Api.FinancialProduct.Application.Validators;
 
 using Api.FinancialProduct.Application.Products.Commands.Create;
+using Api.FinancialProduct.Domain.Constants;
 using FluentValidation;
 
 public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
@@ -22,7 +23,8 @@ public class CreateProductCommandValidator : AbstractValidator<CreateProductComm
             .GreaterThan(0).WithMessage("Amount must be greater than zero");
         
         RuleFor(product => product.Type)
-            .NotEmpty().WithMessage("Product type is required");
+            .NotEmpty().WithMessage("Product type is required")
+            .Must(BeAValidType).WithMessage("Invalid type. Valid types are Bond, Stock, Fund, Coins and Commodities");;
 
         RuleFor(product => product.MaturityDate)
             .NotNull()
@@ -30,4 +32,11 @@ public class CreateProductCommandValidator : AbstractValidator<CreateProductComm
             .GreaterThanOrEqualTo(DateTime.Today.Date).WithMessage("Maturity date must be today or in the future")
             .LessThanOrEqualTo(DateTime.Today.Date.AddYears(10)).WithMessage("Maturity date cannot be more than 10 years in the future");
     }
+
+    private bool BeAValidType(int type) => type is
+        ProductType.Bond 
+        or ProductType.Stock  
+        or ProductType.Fund
+        or ProductType.Coins
+        or ProductType.Commodities;
 }

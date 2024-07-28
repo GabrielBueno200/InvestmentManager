@@ -11,7 +11,8 @@ public static class DependencyInjection
     public static void AddInfrastructure(this IServiceCollection services) =>
         services.AddSettings()
                 .AddRepositories()
-                .AddDistributedCache();
+                .AddDistributedCache()
+                .AddUserContext();
 
     private static IServiceCollection AddRepositories(this IServiceCollection services) =>
          services.AddScoped<IProductRepository, ProductRepository>()

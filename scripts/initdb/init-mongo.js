@@ -1,7 +1,15 @@
 db = db.getSiblingDB('investment_db');
 
-db.createCollection('products');
+// Databases
+db.createCollection("products");
+db.createCollection("users");
+db.createCollection("investmentTransactions");
+
+// Indexes
 db.products.createIndex({ amount: 1, maturityDate: -1 });
+
+// #region Rinancial Products
+db.createCollection('products');
 db.products.insertMany([
   {
     _id: ObjectId().toString(),
@@ -98,10 +106,24 @@ db.products.insertMany([
     PriceHistory: [90.00, 95.00, 100.00],
     CreatedAt: new Date("2024-07-10T13:00:00Z"),
     UpdatedAt: new Date("2024-07-10T13:00:00Z")
+  },
+  {
+    _id: "66a69143580a1c0366149f49",
+    Name: "Test product",
+    Description: "A test product",
+    MaturityDate: new Date("2032-09-30T00:00:00Z"),
+    Price: 100.00,
+    Amount: 800,
+    Type: 2, // Fund
+    PriceHistory: [90.00, 95.00, 100.00],
+    CreatedAt: new Date("2024-07-10T13:00:00Z"),
+    UpdatedAt: new Date("2024-07-10T13:00:00Z")
   }
 ]);
 
-db.createCollection("users");
+// #endregion
+
+// #region Users
 db.users.insertMany([
   {
     "_id": ObjectId().toString(),
@@ -156,5 +178,59 @@ db.users.insertMany([
     "Role": "Customer",
     "CreatedAt": "2024-06-01T00:00:00Z",
     "UpdatedAt": "2024-07-01T00:00:00Z"
+  },
+  {
+    "_id": "66a69143580a1c0366149f46",
+    "Username": "testUser",
+    "Email": "testUser@example.com",
+    "PasswordHash": "wZJoKPAsTyfX3b9MRByuqQ==", //@Example2024
+    "Role": "Customer",
+    "CreatedAt": "2024-06-01T00:00:00Z",
+    "UpdatedAt": "2024-07-01T00:00:00Z"
   }
 ]);
+// #endregion
+
+// #region Investments Transactions
+db.investmentTransactions.insertMany([
+  {
+    _id: ObjectId().toString(),
+    ProductId: "66a69143580a1c0366149f49",
+    User: {
+      Id: "66a69143580a1c0366149f46",
+      Username: "testUser"
+    },
+    Amount: 10,
+    TotalPrice: 10 * 100.00,
+    Type: 1,
+    CreatedAt: new Date("2024-07-10T13:00:00Z"),
+    UpdatedAt: new Date("2024-07-10T13:00:00Z")
+  },
+  {
+    _id: ObjectId().toString(),
+    ProductId: "66a69143580a1c0366149f49",
+    User: {
+      Id: "66a69143580a1c0366149f46",
+      Username: "testUser"
+    },
+    Amount: 20,
+    TotalPrice: 20 * 100.00,
+    Type: 1,
+    CreatedAt: new Date("2024-07-10T13:00:00Z"),
+    UpdatedAt: new Date("2024-07-10T13:00:00Z")
+  },
+  {
+    _id: ObjectId().toString(),
+    ProductId: "66a69143580a1c0366149f49",
+    User: {
+      Id: "66a69143580a1c0366149f46",
+      Username: "testUser"
+    },
+    Amount: 15,
+    TotalPrice: 15 * 100.00,
+    Type: 1,
+    CreatedAt: new Date("2024-07-10T13:00:00Z"),
+    UpdatedAt: new Date("2024-07-10T13:00:00Z")
+  }
+]);
+// #endregion

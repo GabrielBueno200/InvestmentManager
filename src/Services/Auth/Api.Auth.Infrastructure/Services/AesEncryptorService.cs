@@ -8,8 +8,6 @@ namespace Api.Auth.Infrastructure.Services;
 
 public class AesEncryptorService(IOptions<AesSettings> aesSettings) : IEncryptorService
 {
-    // private readonly byte[] _key = Convert.FromBase64String(aesSettings.Value.Key);
-    // private readonly byte[] _iv = Convert.FromBase64String(aesSettings.Value.Iv);
     private readonly byte[] _key = Convert.FromBase64String(aesSettings.Value.Key);
     private readonly byte[] _iv = Convert.FromBase64String(aesSettings.Value.Iv);
 

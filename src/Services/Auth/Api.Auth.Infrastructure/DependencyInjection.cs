@@ -21,7 +21,7 @@ public static class DependencyInjection
                 .AddScoped<ITokenService, JwtTokenService>();
 
     private static IServiceCollection AddRepositories(this IServiceCollection services) =>
-         services.AddScoped<IRepository<User>, Repository<User>>();
+         services.AddScoped<IRepository<Domain.Entities.User>, Repository<Domain.Entities.User>>();
 
     private static IServiceCollection AddSettings(this IServiceCollection services) => 
         services.AddBindedSettings<DatabaseSettings>()

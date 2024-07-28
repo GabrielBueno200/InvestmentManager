@@ -10,6 +10,11 @@ public static class AuthErrors
         "Incorrect email or password was provided",
         HttpStatusCode.Unauthorized);
 
+    public static readonly Error UserAlreadyExists = new(
+        "UserAlreadyExists",
+        "User with provided email already exists",
+        HttpStatusCode.Unauthorized);
+
     public static readonly Error UserNotFound = new(
         "User.NotFound",
         "User with provided data was not found",

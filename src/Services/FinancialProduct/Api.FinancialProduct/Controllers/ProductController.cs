@@ -12,7 +12,6 @@ namespace Api.FinancialProduct.Controllers;
 
 [ApiController]
 [Route("products")]
-[Authorize]
 public class ProductController(ISender sender) : ControllerBase
 {
     private readonly ISender _sender = sender;

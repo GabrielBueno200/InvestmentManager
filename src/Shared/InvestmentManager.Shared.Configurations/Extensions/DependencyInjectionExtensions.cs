@@ -1,3 +1,4 @@
+using InvestmentManager.Shared.Configurations.Contexts;
 using InvestmentManager.Shared.Configurations.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +30,13 @@ public static partial class DependencyInjectionExtensions
         services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(settings.ConnectionString));
 
         return services;
+    }
+
+    public static IServiceCollection AddUserContext(this IServiceCollection services)
+    {
+        services.AddHttpContextAccessor();
+        
+        return services.AddScoped<IUserContext, UserContext>();
     }
 
     public static IServiceCollection AddJwtAuthentication(this IServiceCollection services)

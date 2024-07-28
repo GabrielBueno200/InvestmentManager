@@ -38,7 +38,7 @@ public static class ProductMapping
         MaturityDate = product.MaturityDate,
         Price = product.Price,
         Amount = product.Amount,
-        Type = (int) product.Type,
+        Type = product.Type,
         PriceHistory = product.PriceHistory,
         CreatedAt = product.CreatedAt,
         UpdatedAt = product.UpdatedAt

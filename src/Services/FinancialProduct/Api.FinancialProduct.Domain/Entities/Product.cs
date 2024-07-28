@@ -1,4 +1,4 @@
-using Api.FinancialProduct.Domain.Enums;
+using Api.FinancialProduct.Domain.Constants;
 using InvestmentManager.Shared.Utilities.Abstractions;
 using InvestmentManager.Shared.Utilities.Helpers;
 
@@ -12,6 +12,6 @@ public class Product : BaseEntity
     public DateTime? MaturityDate { get; set; }
     public decimal Price { get; set; }
     public int Amount { get; set; }
-    public ProductType Type { get; set; }
+    public int Type { get; set; }
     public IList<decimal> PriceHistory { get; set; }
 }

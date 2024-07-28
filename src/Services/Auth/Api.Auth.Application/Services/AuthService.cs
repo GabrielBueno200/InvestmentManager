@@ -13,14 +13,14 @@ using InvestmentManager.Shared.Utilities.Helpers;
 namespace Api.Auth.Application.Services;
 
 public class AuthService(
-    IRepository<User> userRepository, 
+    IRepository<Domain.Entities.User> userRepository, 
     IEncryptorService encryptorService,
     ITokenService tokenService,
     IValidator<LoginPayloadDto> loginValidator,
     IValidator<RegisterUserPayloadDto> registerValidator,
     IValidator<AssingRolePayloadDto> assignRoleValidator) : IAuthService
 {
-    private readonly IRepository<User> _userRepository = userRepository;
+    private readonly IRepository<Domain.Entities.User> _userRepository = userRepository;
     private readonly IEncryptorService _encryptorService = encryptorService;
     private readonly ITokenService _tokenService = tokenService;
     private readonly IValidator<LoginPayloadDto> _loginValidator = loginValidator;
@@ -59,9 +59,16 @@ public class AuthService(
             return validation.GetValidationErrors();
         }
 
+        var existingUser = (await _userRepository.FilterByAsync(user => user.Email == payload.Email)).FirstOrDefault();
+
+        if (existingUser is not null)
+        {
+            return Result.Failure(AuthErrors.UserAlreadyExists);
+        }
+
         var passwordHash = _encryptorService.Encrypt(payload.Password);
 
-        var user = new User 
+        var user = new Domain.Entities.User 
         { 
             Username = payload.Username, 
             Email = payload.Email, 
