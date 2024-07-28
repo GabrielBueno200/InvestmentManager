@@ -11,7 +11,6 @@ namespace Api.FinancialProduct.Infrastructure.Repositories;
 public class CachedProductRepository(IProductRepository decorated, IConnectionMultiplexer muxer) : IProductRepository
 {
     private readonly IProductRepository _decorated = decorated;
-
     private readonly IDatabase _database = muxer.GetDatabase();
 
     public async Task<PaginatedResult<Product>> GetAvailableProductsAsync(int pageSize, string? lastId = null)

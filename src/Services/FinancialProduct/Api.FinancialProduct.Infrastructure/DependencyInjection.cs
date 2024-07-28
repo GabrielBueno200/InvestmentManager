@@ -14,7 +14,8 @@ public static class DependencyInjection
                 .AddDistributedCache();
 
     private static IServiceCollection AddRepositories(this IServiceCollection services) =>
-         services.AddScoped<IProductRepository, ProductRepository>();
+         services.AddScoped<IProductRepository, ProductRepository>()
+                 .Decorate<IProductRepository, CachedProductRepository>();
 
     private static IServiceCollection AddSettings(this IServiceCollection services) => 
         services.AddBindedSettings<DatabaseSettings>()

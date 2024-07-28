@@ -24,7 +24,7 @@ public static class DependencyInjectionExtensions
             .GetRequiredService<IOptions<DistributedCacheSettings>>()?
             .Value!;
             
-        services.AddSingleton(ConnectionMultiplexer.Connect(settings.ConnectionString));
+        services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(settings.ConnectionString));
 
         return services;
     }

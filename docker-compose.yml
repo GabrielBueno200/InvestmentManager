@@ -16,13 +16,14 @@ services:
       start_period: 30s
       timeout: 5s
 
-    redis:
-      image: redis:latest
-      ports:
-        - 6379:6379
-      healthcheck:
-        test: ["CMD", "redis-cli", "ping"]
-        interval: 10s
-        retries: 5
-        start_period: 30s
-        timeout: 5s
+  redis:
+    image: redis:latest
+    command: redis-server --requirepass Example1234!
+    ports:
+      - 6379:6379
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
