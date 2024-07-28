@@ -19,5 +19,6 @@ public static class DependencyInjection
 
     private static IServiceCollection AddSettings(this IServiceCollection services) => 
         services.AddBindedSettings<DatabaseSettings>()
+                .AddBindedSettings<JwtSettings>()
                 .AddBindedSettings<DistributedCacheSettings>();
 }

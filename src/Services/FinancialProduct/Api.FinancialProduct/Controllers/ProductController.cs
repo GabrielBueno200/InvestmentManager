@@ -5,16 +5,20 @@ using Api.FinancialProduct.Application.Products.Commands.Delete;
 using Api.FinancialProduct.Application.Products.Commands.Update;
 using Api.FinancialProduct.Application.Products.Queries.GetAll;
 using Api.FinancialProduct.Application.Products.Queries.GetById;
+using Microsoft.AspNetCore.Authorization;
+using InvestmentManager.Shared.Utilities.Constants;
 
 namespace Api.FinancialProduct.Controllers;
 
 [ApiController]
 [Route("products")]
+[Authorize]
 public class ProductController(ISender sender) : ControllerBase
 {
     private readonly ISender _sender = sender;
 
     [HttpPost]
+    [Authorize(Roles = $"{Role.Admin}, {Role.Operation}")]
     public async Task<IActionResult> Create([FromBody] CreateProductCommand command)
     {
         return Ok(await _sender.Send(command));
@@ -39,12 +43,14 @@ public class ProductController(ISender sender) : ControllerBase
     }
 
     [HttpPut]
+    [Authorize(Roles = $"{Role.Admin}, {Role.Operation}")]
     public async Task<IActionResult> Update([FromBody] UpdateProductCommand command)
     {
         return Ok(await _sender.Send(command));
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Roles = $"{Role.Admin}, {Role.Operation}")]
     public async Task<IActionResult> Delete([FromRoute] string id)
     {
         return Ok(await _sender.Send(new DeleteProductCommand(id)));

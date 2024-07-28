@@ -1,5 +1,5 @@
-using Api.FinancialProduct.Application;
-using Api.FinancialProduct.Infrastructure;
+using Api.Auth.Application;
+using Api.Auth.Infrastructure;
 using InvestmentManager.Shared.Configurations.Extensions;
 using InvestmentManager.Shared.Configurations.Filters;
 using InvestmentManager.Shared.Configurations.Middlewares;
@@ -27,7 +27,6 @@ builder.Services
 builder.Services.AddTransient<AuthenticationMiddleware>();
 
 var app = builder.Build();
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

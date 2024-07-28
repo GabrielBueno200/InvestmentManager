@@ -7,7 +7,7 @@ using InvestmentManager.Shared.Configurations.Settings;
 
 namespace InvestmentManager.Shared.Utilities.Abstractions;
 
-public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
+public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
 {
     protected readonly IMongoCollection<TEntity> _collection;
 
@@ -29,7 +29,7 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
 
     public async Task<IEnumerable<TEntity>> GetAllAsync()
     {
-        return await _collection.Find(_ => true).ToListAsync();
+        return await _collection.Find(Builders<TEntity>.Filter.Empty).ToListAsync();
     }
 
     public async Task<PaginatedResult<TEntity>> GetAllAsync(int pageSize, string? lastId = null)

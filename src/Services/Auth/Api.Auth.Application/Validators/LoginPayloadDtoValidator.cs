@@ -8,10 +8,10 @@ public class LoginPayloadDtoValidator : AbstractValidator<LoginPayloadDto>
     public LoginPayloadDtoValidator()
     {
         RuleFor(dto => dto.Email)
-            .NotEmpty().WithMessage("Email is required.")
-            .EmailAddress().WithMessage("Invalid email format.");
+            .NotEmpty().WithMessage("Email is required")
+            .EmailAddress().WithMessage("Invalid email format");
 
         RuleFor(dto => dto.Password)
-            .NotEmpty().WithMessage("Password is required.");
+            .NotEmpty().WithMessage("Password is required");
     }
 }

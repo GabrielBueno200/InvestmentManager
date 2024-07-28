@@ -1,7 +1,7 @@
 db = db.getSiblingDB('investment_db');
 
 db.createCollection('products');
-db.products.createIndex({ amount : 1, maturityDate: -1 });
+db.products.createIndex({ amount: 1, maturityDate: -1 });
 db.products.insertMany([
   {
     _id: ObjectId().toString(),
@@ -98,5 +98,63 @@ db.products.insertMany([
     PriceHistory: [90.00, 95.00, 100.00],
     CreatedAt: new Date("2024-07-10T13:00:00Z"),
     UpdatedAt: new Date("2024-07-10T13:00:00Z")
+  }
+]);
+
+db.createCollection("users");
+db.users.insertMany([
+  {
+    "_id": ObjectId().toString(),
+    "Username": "adminUser",
+    "Email": "admin@example.com",
+    "PasswordHash": "wZJoKPAsTyfX3b9MRByuqQ==", //@Example2024
+    "Role": "Admin",
+    "CreatedAt": "2024-01-01T00:00:00Z",
+    "UpdatedAt": "2024-07-01T00:00:00Z"
+  },
+  {
+    "_id": ObjectId().toString(),
+    "Username": "operationUser",
+    "Email": "operation@example.com",
+    "PasswordHash": "wZJoKPAsTyfX3b9MRByuqQ==", //@Example2024
+    "Role": "Operation",
+    "CreatedAt": "2024-02-01T00:00:00Z",
+    "UpdatedAt": "2024-07-01T00:00:00Z"
+  },
+  {
+    "_id": ObjectId().toString(),
+    "Username": "customerUser",
+    "Email": "customer@example.com",
+    "PasswordHash": "wZJoKPAsTyfX3b9MRByuqQ==", //@Example2024
+    "Role": "Customer",
+    "CreatedAt": "2024-03-01T00:00:00Z",
+    "UpdatedAt": null
+  },
+  {
+    "_id": ObjectId().toString(),
+    "Username": "anotherAdminUser",
+    "Email": "anotheradmin@example.com",
+    "PasswordHash": "wZJoKPAsTyfX3b9MRByuqQ==", //@Example2024
+    "Role": "Admin",
+    "CreatedAt": "2024-04-01T00:00:00Z",
+    "UpdatedAt": "2024-07-01T00:00:00Z"
+  },
+  {
+    "_id": ObjectId().toString(),
+    "Username": "anotherOperationUser",
+    "Email": "anotheroperation@example.com",
+    "PasswordHash": "wZJoKPAsTyfX3b9MRByuqQ==", //@Example2024
+    "Role": "Operation",
+    "CreatedAt": "2024-05-01T00:00:00Z",
+    "UpdatedAt": null
+  },
+  {
+    "_id": ObjectId().toString(),
+    "Username": "anotherCustomerUser",
+    "Email": "anothercustomer@example.com",
+    "PasswordHash": "wZJoKPAsTyfX3b9MRByuqQ==", //@Example2024
+    "Role": "Customer",
+    "CreatedAt": "2024-06-01T00:00:00Z",
+    "UpdatedAt": "2024-07-01T00:00:00Z"
   }
 ]);
