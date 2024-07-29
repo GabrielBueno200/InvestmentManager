@@ -38,7 +38,7 @@
 O projeto se propõe a ser um sistema de gestão de portfólio de investimentos para uma empresa de consultoria financeira, permitindo que os usuários gerenciem os investimentos e comprem, vendam e acompanhem investimentos.
 
 ### Abordagens exploradas
-Para garantir que consultas de produtos disponíveis e extratos mantenham um tempo de resposta abaixo de 100ms, foram usados recursos como `load balancer` para distribuir a carga entre instâncias e evitar sobrecarga, cache distribuído para acelerar o acesso a dados frequentes e bancos de dados não relacionais com índices para otimizar consultas e escalar eficientemente.
+Para garantir que consultas de produtos disponíveis e extratos mantenham um tempo de resposta abaixo de 100ms, foram usados recursos como `load balancer` para distribuir a carga entre instâncias e evitar sobrecarga, cache distribuído para acelerar o acesso a dados frequentes e bancos de dados não relacionais com índices e paginação baseada em cursor para otimizar consultas e escalar eficientemente.
 
 ## 🚀 Como rodar
 
