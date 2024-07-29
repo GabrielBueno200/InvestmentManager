@@ -36,7 +36,7 @@ public class NegotiationController(ITransactionService transactionService) : Con
     public async Task<IActionResult> GetInvestmentsByProductAsync(
         [FromQuery] string productId,
         [FromQuery] int pageSize,
-        [FromQuery] string lastId 
+        [FromQuery] string? lastId = null 
     )
     {
         return Ok(await _transactionService.GetInvestmentsByProductAsync(productId, pageSize, lastId));

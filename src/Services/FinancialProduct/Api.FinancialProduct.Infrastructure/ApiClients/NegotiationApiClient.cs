@@ -12,12 +12,17 @@ public class NegotiationApiClient(HttpClient client) : INegotiationApiClient
     public Task<PaginatedResult<InvestmentTransactionResponseDto>> GetTransactionsByProductAsync(
         string productId, int pageSize, string? lastId = null)
     {
-        return RequestBuilder
+        var request = RequestBuilder
             .Get
             .WithUrl("negotiation/product")
             .WithQueryParam("productId", productId)
-            .WithQueryParam("pageSize", pageSize)
-            .WithQueryParam("lastId", lastId)
-            .SendAsync<PaginatedResult<InvestmentTransactionResponseDto>>(_client);
+            .WithQueryParam("pageSize", pageSize);
+
+        if (!string.IsNullOrEmpty(lastId))
+        {
+            request.WithQueryParam("lastId", lastId);
+        }
+        
+        return request.SendAsync<PaginatedResult<InvestmentTransactionResponseDto>>(_client);
     }
 }
