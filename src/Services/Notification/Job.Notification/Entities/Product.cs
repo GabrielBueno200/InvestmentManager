@@ -1,7 +1,7 @@
 using InvestmentManager.Shared.Utilities.Abstractions;
 using InvestmentManager.Shared.Utilities.Helpers;
 
-namespace Api.FinancialProduct.Domain.Entities;
+namespace Job.Notification.Entities;
 
 [Collection("products")]
 public class Product : BaseEntity

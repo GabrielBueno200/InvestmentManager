@@ -58,6 +58,11 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
         };
     }
 
+    public async Task<IEnumerable<TEntity>> GetFilteredAsync(FilterDefinition<TEntity> filter)
+    {
+        return await _collection.Find(filter).ToListAsync();
+    }
+
     public async Task<IEnumerable<TEntity>> FilterByAsync(Expression<Func<TEntity, bool>> filterExpression)
     {
         return await _collection.Find(filterExpression).ToListAsync();

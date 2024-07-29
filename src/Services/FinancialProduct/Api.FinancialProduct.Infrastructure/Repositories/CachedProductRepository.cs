@@ -52,4 +52,6 @@ public class CachedProductRepository(IProductRepository decorated, IConnectionMu
         => _decorated.GetFilteredAsync(filter, pageSize, lastId);
 
     public Task UpdateAsync(Product document) => _decorated.UpdateAsync(document);
+
+    public Task<IEnumerable<Product>> GetFilteredAsync(FilterDefinition<Product> filter) => _decorated.GetFilteredAsync(filter);
 }
