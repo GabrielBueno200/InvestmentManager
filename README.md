@@ -99,7 +99,7 @@ Todos os microsserviços implementados requerem autenticação, então antes de 
 
 Para visualizar o extrato de um produto será necessário consumir a rota `/products/extract` do microsserviço `Api.FinancialProduct`. Vale ressaltar que para que sejam exibidos os investimentos associados ao produto será necessário que antes tenha sido feito algum investimento (compra ou venda) por meio das rotas `/negotiation/buy` e `/negotiation/sell`, pertencentes ao microsserviço `Api.Negotiation`.
 
-- No microsserviço `Api.FinancialProduct` também implementados métodos de `CRUD` para os produtos, cada um com as suas respectivas autorizações. Devido à alta volumetria de dados especificada no case, também foi implementado um `load balancer` e `proxy reverso` com `nginx` para esse serviço (veja `/scripts/nginx.conf`). Além disso, também foi utilizado cache distribuído para as instâncias balanceadas utilizando `Redis`.
+- No microsserviço `Api.FinancialProduct` foram implementados métodos de `CRUD` para os produtos financeiros, cada um com os seus respectivos privilégios de autorização. Devido à alta volumetria de dados especificada no case, também foi implementado `load balancer` e `proxy reverso` com `nginx` para esse serviço (veja `/scripts/nginx.conf`). Além disso, também foi utilizado cache distribuído para as instâncias balanceadas utilizando `Redis`.
 
 - No microsserviço `Api.Negotiation` foram implementados métodos de negociação, ou seja, de compra e venda, conforme dito anteriormente. Além disso, também existe uma rota para retornar os investimentos do usuário logado: `/negotiation/user`
 
