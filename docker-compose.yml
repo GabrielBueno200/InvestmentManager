@@ -32,7 +32,7 @@ services:
     image: nginx:latest
     container_name: reverse_proxy
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./scripts/nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
       - "3000:80"
 
@@ -45,23 +45,24 @@ services:
 
   auth_api:
     build:
-      context: .
-      dockerfile: ./src/Services/Auth/Api.Auth/Dockerfile
+      context: src
+      dockerfile: ./Services/Auth/Api.Auth/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
     ports:
-      - 5000:80
+      - 5000:8080
     depends_on:
       - mongo
 
   product_api:
     build:
-      context: .
-      dockerfile: ./src/Services/FinancialProduct/Api.FinancialProduct/Dockerfile
+      context: src
+      dockerfile: ./Services/FinancialProduct/Api.FinancialProduct/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-    ports:
-      - 5001:80
+      - PORT=3000
+    deploy:
+      replicas: 3
     depends_on:
       - mongo
       - redis
@@ -69,12 +70,12 @@ services:
 
   negotiation_api:
     build:
-      context: .
-      dockerfile: ./src/Services/Negotiation/Api.Negotiation/Dockerfile
+      context: src
+      dockerfile: ./Services/Negotiation/Api.Negotiation/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
     ports:
-      - 5005:80
+      - 5005:8080
     depends_on:
       - mongo
       - redis
@@ -82,8 +83,10 @@ services:
 
   notification_job:
     build:
-      context: .
-      dockerfile: ./src/Services/Notification/Job.Notification/Dockerfile
+      context: src
+      dockerfile: ./Services/Notification/Job.Notification/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
     depends_on:
       - mailhog
       - mongo

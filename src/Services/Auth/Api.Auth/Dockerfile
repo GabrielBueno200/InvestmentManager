@@ -1,11 +1,11 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-RUN mkdir /app
+
 WORKDIR /app
 
 COPY . .
-RUN dotnet restore Api.Auth/*.csproj
+RUN dotnet restore ./Services/Auth/Api.Auth/Api.Auth.csproj
 
-WORKDIR /app/Api.Auth
+WORKDIR /app/Services/Auth/Api.Auth
 RUN dotnet publish -c release -o /dist --no-restore
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0

@@ -1,11 +1,11 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-RUN mkdir /app
+
 WORKDIR /app
 
 COPY . .
-RUN dotnet restore Api.FinancialProduct/*.csproj
+RUN dotnet restore ./Services/FinancialProduct/Api.FinancialProduct/Api.FinancialProduct.csproj
 
-WORKDIR /app/Api.FinancialProduct
+WORKDIR /app/Services/FinancialProduct/Api.FinancialProduct
 RUN dotnet publish -c release -o /dist --no-restore
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0

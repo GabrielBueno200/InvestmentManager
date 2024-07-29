@@ -1,4 +1,5 @@
 using System.Collections.Specialized;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -117,10 +118,10 @@ public class RequestBuilder
 
         var response = await _client.SendAsync(request);
 
-        if (responseType is null)
+        if (responseType is null || response.Content is null || response.StatusCode is HttpStatusCode.NoContent)
         {
             return null;
-        };
+        }
 
         return JsonSerializer.Deserialize(
             json: await response.Content.ReadAsStringAsync(),

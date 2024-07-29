@@ -26,6 +26,11 @@ builder.Services
 
 builder.Services.AddTransient<AuthenticationMiddleware>();
 
+#if !DEBUG
+var port = builder.Configuration["PORT"];
+builder.WebHost.UseUrls($"http://*:{port}");
+#endif
+
 var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
