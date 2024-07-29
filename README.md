@@ -3,7 +3,7 @@
 
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/GabrielBueno200/InvestmentManager">
   
-  <a href="https://github.com/GabrielBueno200/monty-hall">
+  <a href="https://github.com/GabrielBueno200/InvestmentManager">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/GabrielBueno200/InvestmentManager">
   </a>
   
