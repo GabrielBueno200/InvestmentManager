@@ -12,7 +12,7 @@ using System.Linq.Expressions;
 using InvestmentManager.Shared.Utilities.Constants;
 using FluentValidation.Results;
 
-namespace Api.Auth.Application.Tests.Services;
+namespace Api.Auth.UnitTests.Services;
 
 public class AuthServiceTest
 {

@@ -10,7 +10,7 @@ using System.Text.Json;
 
 namespace Api.FinancialProduct.Application.Products.Queries.GetExtract;
 
-public class GetExtractQueryHandler(
+public class GetProductExtractQueryHandler(
     IProductRepository productRepository, 
     INegotiationApiClient negotiationApiClient,
     IConnectionMultiplexer muxer)

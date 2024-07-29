@@ -8,7 +8,7 @@ using Api.FinancialProduct.Domain.Interfaces.Repositories;
 
 namespace Api.FinancialProduct.Application.Products.Queries.GetAll;
 
-public class GetProductByIdQueryHandler(IProductRepository productRepository) 
+public class GetAllProductsQueryHandler(IProductRepository productRepository) 
     : IRequestHandler<GetAllProductsQuery, Result<PaginatedResult<ProductResponseDto>>>
 {
     private readonly IProductRepository _productRepository = productRepository;
