@@ -15,4 +15,10 @@ public class InvestmentTransactionRepository(IOptions<DatabaseSettings> database
         var filter = Builders<InvestmentTransaction>.Filter.Eq(transaction => transaction.ProductId, productId);
         return await GetFilteredAsync(filter, pageSize, lastId);
     }
+
+    public async Task<PaginatedResult<InvestmentTransaction>> GetUserInvestments(string userId, int pageSize, string? lastId = null)
+    {
+        var filter = Builders<InvestmentTransaction>.Filter.Eq(transaction => transaction.User.Id, userId);
+        return await GetFilteredAsync(filter, pageSize, lastId);
+    }
 }

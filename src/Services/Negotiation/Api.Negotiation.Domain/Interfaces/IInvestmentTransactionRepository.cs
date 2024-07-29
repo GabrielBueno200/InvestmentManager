@@ -6,4 +6,5 @@ namespace Api.Negotiation.Domain.Interfaces;
 public interface IInvestmentTransactionRepository : IRepository<InvestmentTransaction>
 {
     Task<PaginatedResult<InvestmentTransaction>> GetByProductIdAsync(string productId, int pageSize, string? lastId = null);
+    Task<PaginatedResult<InvestmentTransaction>> GetUserInvestments(string userId, int pageSize, string? lastId = null);
 }

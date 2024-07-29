@@ -25,7 +25,14 @@ public class NegotiationController(ITransactionService transactionService) : Con
         return Ok(await _transactionService.CreateTransactionAsync(payload, TransactionType.Sell));
     }
 
-    [HttpPost]
+    [HttpGet("user")]
+    public async Task<IActionResult> GetUserInvestmentssync([FromQuery] int pageSize, [FromQuery] string? lastId = null)
+    {
+        return Ok(await _transactionService.GetUserInvestmentAsync(pageSize, lastId));
+    }
+
+    [HttpGet("product")]
+    [AllowAnonymous]
     public async Task<IActionResult> GetInvestmentsByProductAsync(
         [FromQuery] string productId,
         [FromQuery] int pageSize,

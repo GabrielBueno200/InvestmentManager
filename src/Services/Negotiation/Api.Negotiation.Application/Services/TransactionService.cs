@@ -72,4 +72,22 @@ public class TransactionService(
 
         return mappedTransactions;
     }
+
+    public async Task<Result<PaginatedResult<InvestmentTransactionResponseDto>>> GetUserInvestmentAsync(
+        int pageSize, string? lastId = null)
+    {
+        var loggedUser = _userContext.GetLoggedUser();
+
+        var transactions = await _transactionRepository.GetUserInvestments(
+            loggedUser.Id, pageSize, lastId);
+
+        var mappedTransactions = transactions.ToResponseDto();
+
+        if (!transactions.Items.Any())
+        {
+            return Result.Success(mappedTransactions, HttpStatusCode.NoContent);
+        }
+
+        return mappedTransactions;
+    }
 }

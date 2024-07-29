@@ -9,6 +9,10 @@ public interface ITransactionService
 {
     Task<Result<InvestmentTransactionResponseDto>> CreateTransactionAsync(
         InvestmentTransactionPayloadDto payload, string type);
+    
     Task<Result<PaginatedResult<InvestmentTransactionResponseDto>>> GetInvestmentsByProductAsync(
         string productId, int pageSize, string? lastId = null);
+
+    Task<Result<PaginatedResult<InvestmentTransactionResponseDto>>> GetUserInvestmentAsync(
+        int pageSize, string? lastId = null);
 }
