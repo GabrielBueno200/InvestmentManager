@@ -35,7 +35,7 @@ await Host.CreateDefaultBuilder(args)
             configurator.ScheduleJob<SendEmailNotificationJob>(trigger => trigger
                 .WithIdentity("helloWorldTrigger", "helloWorldGroup")
                 .StartNow()
-                .WithCronSchedule("*/15 * * * * ?"));
+                .WithCronSchedule(dailyCronExpression));
         });
 
         services.AddQuartzHostedService(options => options.WaitForJobsToComplete = true);
