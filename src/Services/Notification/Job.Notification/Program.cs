@@ -28,7 +28,7 @@ await Host.CreateDefaultBuilder(args)
             .AddScoped<IRepository<User>, Repository<User>>()
             .AddScoped<IRepository<Product>, Repository<Product>>();
 
-        var dailyCronExpression = context.Configuration.GetSection("CronExpression");
+        var dailyCronExpression = context.Configuration["CronExpression"]!;
 
         services.AddQuartz(configurator =>
         {
