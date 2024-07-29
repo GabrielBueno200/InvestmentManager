@@ -15,7 +15,7 @@ public class UserContext(IHttpContextAccessor httpContextAccessor) : IUserContex
 
         if (httpContext is null)
         {
-            throw new InvalidOperationException("HttpContext is not available.");
+            throw new InvalidOperationException("HttpContext is not available");
         }
 
         var authorizationHeader = httpContext.Request.Headers["Authorization"].FirstOrDefault();
@@ -34,7 +34,7 @@ public class UserContext(IHttpContextAccessor httpContextAccessor) : IUserContex
 
         if (httpContext == null)
         {
-            throw new InvalidOperationException("HttpContext is not available.");
+            throw new InvalidOperationException("HttpContext is not available");
         }
 
         var userId = httpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value!;

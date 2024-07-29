@@ -5,4 +5,5 @@ using InvestmentManager.Shared.Utilities.Contracts.Dtos;
 
 namespace Api.FinancialProduct.Application.Products.Queries.GetAll;
 
-public record GetAvailableProductsQuery(int PageSize, string? LastId = null) : IRequest<Result<PaginatedResult<ProductResponseDto>>>;
+public record GetAvailableProductsQuery(int PageSize, string? LastId = null) 
+    : IRequest<Result<PaginatedResult<ProductResponseDto>>>;

@@ -7,6 +7,7 @@ using Api.FinancialProduct.Application.Products.Queries.GetAll;
 using Api.FinancialProduct.Application.Products.Queries.GetById;
 using Microsoft.AspNetCore.Authorization;
 using InvestmentManager.Shared.Utilities.Constants;
+using Api.FinancialProduct.Application.Products.Queries.GetExtract;
 
 namespace Api.FinancialProduct.Controllers;
 
@@ -35,10 +36,11 @@ public class ProductController(ISender sender) : ControllerBase
         return Ok(await _sender.Send(new GetProductByIdQuery(id)));
     }
 
-    [HttpGet("available")]
-    public async Task<IActionResult> GetAvailable([FromQuery] int pageSize, [FromQuery] string? lastId = null)
+    [HttpGet("extract")]
+    public async Task<IActionResult> GetExtract(
+        [FromQuery] string productId, [FromQuery] int pageSize, [FromQuery] string? lastId = null)
     {
-        return Ok(await _sender.Send(new GetAvailableProductsQuery(pageSize, lastId)));
+        return Ok(await _sender.Send(new GetProductExtractQuery(productId, pageSize, lastId)));
     }
 
     [HttpPut]

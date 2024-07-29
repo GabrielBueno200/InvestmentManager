@@ -12,5 +12,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Api.FinancialProduct.Domain\Api.FinancialProduct.Domain.csproj" />
     <ProjectReference Include="..\..\..\Shared\InvestmentManager.Shared.Utilities\InvestmentManager.Shared.Utilities.csproj" />
+    <ProjectReference Include="..\..\..\Shared\InvestmentManager.Shared.Configurations\InvestmentManager.Shared.Configurations.csproj" />
   </ItemGroup>
 </Project>

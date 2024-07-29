@@ -26,7 +26,7 @@ public class CachedProductRepository(IProductRepository decorated, IConnectionMu
 
         var result = await _decorated.GetAvailableProductsAsync(pageSize, lastId);
 
-        await _database.StringSetAsync(cacheKey, JsonSerializer.Serialize(result), TimeSpan.FromMinutes(2));
+        await _database.StringSetAsync(cacheKey, JsonSerializer.Serialize(result), TimeSpan.FromMinutes(1));
 
         return result;
     }
