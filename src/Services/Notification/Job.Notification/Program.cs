@@ -33,7 +33,7 @@ await Host.CreateDefaultBuilder(args)
         services.AddQuartz(configurator =>
         {
             configurator.ScheduleJob<SendEmailNotificationJob>(trigger => trigger
-                .WithIdentity("helloWorldTrigger", "helloWorldGroup")
+                .WithIdentity("emailJobTrigger", "emailJobGroup")
                 .StartNow()
                 .WithCronSchedule(dailyCronExpression));
         });
