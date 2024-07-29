@@ -45,7 +45,7 @@ Para garantir que consultas de produtos disponíveis e extratos mantenham um tem
 ### Requisitos Mínimos
 Para a execução do sistema é necessário que o `Docker` e `docker-compose` estejam instalados.
 
-Existem duas formas de executar o sistema: a primeira localmente, executando todos os microsserviços via IDE ou linha de comando; e a segunda via `Docker`, executando todos os containeres. 
+Existem duas formas de executar o sistema: a primeira localmente executando todos os microsserviços via IDE ou linha de comando; e a segunda via `Docker`, executando todos os containeres. 
 
 
 ### 1 - Executar Localmente
