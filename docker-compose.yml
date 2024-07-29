@@ -42,3 +42,48 @@ services:
     ports:
       - "1025:1025"
       - "8025:8025"
+
+  auth_api:
+    build:
+      context: .
+      dockerfile: ./src/Services/Auth/Api.Auth/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - 5000:80
+    depends_on:
+      - mongo
+
+  product_api:
+    build:
+      context: .
+      dockerfile: ./src/Services/FinancialProduct/Api.FinancialProduct/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - 5001:80
+    depends_on:
+      - mongo
+      - redis
+      - nginx
+
+  negotiation_api:
+    build:
+      context: .
+      dockerfile: ./src/Services/Negotiation/Api.Negotiation/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - 5005:80
+    depends_on:
+      - mongo
+      - redis
+      - nginx
+
+  notification_job:
+    build:
+      context: .
+      dockerfile: ./src/Services/Notification/Job.Notification/Dockerfile
+    depends_on:
+      - mailhog
+      - mongo
