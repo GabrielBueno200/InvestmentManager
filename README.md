@@ -52,7 +52,7 @@ Existem duas formas de executar o sistema: a primeira localmente, executando tod
 
 ### 1.1 - Executar containeres 
 
-Para executar o projeto localmente, será necessário executar ao menos os containeres referentes à base de dados, ao cache distribuído e ao simulador de protocolo Smtp. Esses containeres estão especificados no arquivo `docker-compose.yml`, são eles: `mongo`, `redis`, `mailhog`.
+Para executar o projeto localmente, será necessário executar ao menos os containeres referentes à base de dados, ao cache distribuído e ao simulador de servidor Smtp. Esses containeres estão especificados no arquivo `docker-compose.yml`, são eles: `mongo`, `redis`, `mailhog`.
 
 ```bash
 sudo docker compose up -d mongo redis mailhog
@@ -105,7 +105,7 @@ Para visualizar o extrato de um produto será necessário consumir a rota `/prod
 
 ### 4 - Envio de e-mail
 
-Para o envio dos emails, o job `SendEmailNotificationJob`, desenvolvido em `Quartz.Net` e contido no microsserviço `Notification`, é executado diariamente ao meio-dia, conforme a expressão cron `0 0 12 * * ?`. São enviados e-mails para usuários administradores de produtos que estejam com a data de vencimento de hoje até a próxima semana. Também foi utilizado o simulador de protocolo Smtp `MailHog`, podendo visualizar os envio de e-mails trafegados na sua interface gráfica:
+Para o envio dos emails, o job `SendEmailNotificationJob`, desenvolvido em `Quartz.Net` e contido no microsserviço `Notification`, é executado diariamente ao meio-dia, conforme a expressão cron `0 0 12 * * ?`. São enviados e-mails para usuários administradores de produtos que estejam com a data de vencimento de hoje até a próxima semana. Também foi utilizado o simulador de servidor Smtp `MailHog`, podendo visualizar os envios de e-mails trafegados na sua interface gráfica (`localhost:8025`):
 
 ![MailHog](docs/mailhog1.png)
 ![MailHog](docs/mailhog2.png)
