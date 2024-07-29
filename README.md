@@ -61,7 +61,7 @@ sudo docker compose up -d mongo redis mailhog
 ### 1.2 - Compilar e executar os projetos
 
 - Visual Studio / Visual Studio Code / Outras IDEs:
-  - Caso prefira executar pelo Visual Studio, primeiro será necessário abrir a solution "InvestmentManager.sln"
+  - Caso prefira executar via IDE, primeiro será necessário abrir a solution "InvestmentManager.sln"
   - Após isso, basta executar cada projeto de microsserviço contido na pasta `src/Service`
 
 - Linha de comando
