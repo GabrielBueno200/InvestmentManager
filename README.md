@@ -45,14 +45,14 @@ Para garantir que consultas de produtos disponíveis e extratos mantenham um tem
 ### Requisitos Mínimos
 Para a execução do sistema é necessário que o `Docker` e `docker-compose` estejam instalados.
 
-Existem duas formas de executar o sistema: a primeira localmente executando todos os microsserviços via IDE ou linha de comando; e a segunda via `Docker`, executando todos os containeres. 
+Existem duas formas de executar o sistema: a primeira localmente, executando todos os microsserviços via IDE ou linha de comando; e a segunda via `Docker`, executando todos os containeres. 
 
 
 ### 1 - Executar Localmente
 
 ### 1.1 - Executar containeres 
 
-Para executar o projeto localmente, será necessário executar ao menos os containeres referentes à base de dados, ao cache distribuído e ao simulador de servidor Smtp. Esses containeres estão especificados no arquivo `docker-compose.yml`, são eles: `mongo`, `redis`, `mailhog`.
+Para executar o projeto localmente será necessário executar ao menos os containeres referentes à base de dados, ao cache distribuído e ao simulador de servidor Smtp. Esses containeres estão especificados no arquivo `docker-compose.yml`. São eles: `mongo`, `redis`, `mailhog`.
 
 ```bash
 sudo docker compose up -d mongo redis mailhog
