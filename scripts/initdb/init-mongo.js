@@ -9,7 +9,6 @@ db.createCollection("investmentTransactions");
 db.products.createIndex({ amount: 1, maturityDate: -1 });
 
 // #region Financial Products
-db.createCollection('products');
 db.products.insertMany([
   {
     _id: ObjectId().toString(),
