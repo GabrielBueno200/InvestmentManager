@@ -1,6 +1,6 @@
 db = db.getSiblingDB('investment_db');
 
-// Databases
+// Collections
 db.createCollection("products");
 db.createCollection("users");
 db.createCollection("investmentTransactions");
@@ -8,7 +8,7 @@ db.createCollection("investmentTransactions");
 // Indexes
 db.products.createIndex({ amount: 1, maturityDate: -1 });
 
-// #region Rinancial Products
+// #region Financial Products
 db.createCollection('products');
 db.products.insertMany([
   {
